@@ -9,11 +9,11 @@ import UIKit
 
 class ViewController: UIViewController {
     var numberOnScreen: Float = 0
-    var sinNumber: Double = 0
     var previousNumber: Float = 0
     var performingMath = false
     var operation = 0
-    
+    var totalPoint: Float = 0
+    var gercekSayi: Float = 0
     
     @IBOutlet weak var resultLabel: UILabel!
     @IBAction func numbers(_ sender: UIButton) {
@@ -21,6 +21,8 @@ class ViewController: UIViewController {
             resultLabel.text = String(sender.tag-1)
             numberOnScreen = Float(resultLabel.text!)!
             performingMath = false
+        } else if sender.tag == 17 {
+            resultLabel.text = resultLabel.text! + "."
         } else {
             resultLabel.text = resultLabel.text! + String(sender.tag-1)
             numberOnScreen = Float(resultLabel.text!)!
@@ -33,16 +35,17 @@ class ViewController: UIViewController {
             if sender.tag == 12 { //Divide
                 resultLabel.text = "\(previousNumber)"
             } else if sender.tag == 13 { //Multiply
-                resultLabel.text = "\(previousNumber)"
+                totalPoint = totalPoint * previousNumber
+                resultLabel.text = "\(totalPoint)"
             } else if sender.tag == 14 { //Minus
                 resultLabel.text = "\(previousNumber)"
             } else if sender.tag == 15 { //Plus
-                resultLabel.text = "\(previousNumber)"
+                totalPoint = totalPoint + previousNumber
+                resultLabel.text = "\(totalPoint)"
             }
             operation = sender.tag
             performingMath = true
         } else if sender.tag == 16 {
-            
             if operation == 12 { //Divide
                 resultLabel.text = String(previousNumber / numberOnScreen)
             } else if operation == 13 { //Multiply
@@ -50,21 +53,23 @@ class ViewController: UIViewController {
             } else if operation == 14 { //Minus
                 resultLabel.text = String(previousNumber - numberOnScreen)
             } else if operation == 15 { //Plus
-                resultLabel.text = String(previousNumber + numberOnScreen)
+                resultLabel.text = String(totalPoint + numberOnScreen)
             }
+            previousNumber = 0
+            numberOnScreen = 0
+            totalPoint = 0
+
         } else if sender.tag == 11 {
             resultLabel.text = ""
             previousNumber = 0
             numberOnScreen = 0
             operation = 0
+            totalPoint = 0
         }
     }
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
     }
-
-
 }
 
