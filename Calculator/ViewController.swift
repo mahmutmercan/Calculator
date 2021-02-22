@@ -60,16 +60,28 @@ class ViewController: UIViewController {
             totalPoint = 0
 
         } else if sender.tag == 11 {
-            resultLabel.text = ""
-            previousNumber = 0
-            numberOnScreen = 0
-            operation = 0
-            totalPoint = 0
+            clearText()
         }
     }
+    
+    @IBAction func clearButtonTapped(_ sender: UIButton ) {
+        clearText()
+    }
+    
+    func clearText(){
+        resultLabel.text = ""
+        previousNumber = 0
+        numberOnScreen = 0
+        operation = 0
+        totalPoint = 0
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
     }
+    
+    
+    
 }
 
