@@ -72,19 +72,26 @@ class CalculatorController: UIViewController {
                 currentResult = optDivide(value1: value1, value2: value2)
                 total = Float(currentResult)
                 print(total)
+                resultLabel.text = String(total)
+                
             }
             
             else if sender.tag == 17 {
+                value1 = previousNumber
                 currentResult = optPercent(value1: value1)
                 total = Float(currentResult)
-                print(total)
+                resultLabel.text = String(total)
+                numberOnScreen = 0
+                previousNumber = total
             }
             
             else if sender.tag == 18 {
+                value1 = previousNumber
                 currentResult = optPlusOrMinus(value1: value1)
                 total = Float(currentResult)
-                print(total)
                 resultLabel.text = String(total)
+                numberOnScreen = 0
+                previousNumber = total
             }
             operation = sender.tag
             performingMath = true
@@ -107,7 +114,6 @@ class CalculatorController: UIViewController {
                 total = Float(currentResult)
                 resultLabel.text = String(total)
             }
-
         }
     }
 }
