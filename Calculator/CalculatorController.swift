@@ -44,8 +44,19 @@ class CalculatorController: UIViewController {
     
     @IBAction func buttonTapped(_ sender: UIButton) {
         var currentResult: Float = 0
+        if previousNumber == 0 {
+            previousNumber = numberOnScreen
+            numberOnScreen = 0
+            if sender.tag == 13 {
+                numberOnScreen = 1
+            }
+            if sender.tag == 12 {
+                numberOnScreen = 1
+            }
+        }
         var value1 = previousNumber
         let value2 = numberOnScreen
+
         if resultLabel.text != "" && sender.tag != 11 && sender.tag != 16 {
             previousNumber = Float(resultLabel.text!)!
             if sender.tag == 15 {
@@ -60,12 +71,15 @@ class CalculatorController: UIViewController {
                 currentResult = optMinus(value1: value1, value2: value2)
                 total = Float(currentResult)
                 resultLabel.text = String(total)
+                previousNumber = currentResult
+                numberOnScreen = 0
             }
             
             else if sender.tag == 13 {
                 currentResult = optMultiply(value1: value1, value2: value2)
                 total = Float(currentResult)
-                print(total)
+                resultLabel.text = String(total)
+                previousNumber = currentResult
             }
             
             else if sender.tag == 12 {
@@ -73,7 +87,6 @@ class CalculatorController: UIViewController {
                 total = Float(currentResult)
                 print(total)
                 resultLabel.text = String(total)
-                
             }
             
             else if sender.tag == 17 {
@@ -93,6 +106,34 @@ class CalculatorController: UIViewController {
                 numberOnScreen = 0
                 previousNumber = total
             }
+            
+            else if sender.tag == 20 {
+                value1 = previousNumber
+                currentResult = optSinus(value1: value1)
+                total = Float(currentResult)
+                resultLabel.text = String(total)
+                numberOnScreen = 0
+                previousNumber = total
+            }
+            
+            else if sender.tag == 21 {
+                value1 = previousNumber
+                currentResult = optCosinus(value1: value1)
+                total = Float(currentResult)
+                resultLabel.text = String(total)
+                numberOnScreen = 0
+                previousNumber = total
+            }
+            
+            else if sender.tag == 22 {
+                value1 = previousNumber
+                currentResult = optTanjant(value1: value1)
+                total = Float(currentResult)
+                resultLabel.text = String(total)
+                numberOnScreen = 0
+                previousNumber = total
+            }
+            
             operation = sender.tag
             performingMath = true
         }
@@ -142,6 +183,18 @@ extension CalculatorController {
     
     func optPlusOrMinus(value1: Float) -> Float {
         return value1 * -1
+    }
+    
+    func optSinus(value1: Float) -> Float {
+        return sin(value1 * Float(M_PI) / 180)
+    }
+    
+    func optCosinus(value1: Float) -> Float {
+        return cos(value1 * Float(M_PI) / 180)
+    }
+    
+    func optTanjant(value1: Float) -> Float {
+        return tan(value1 * Float(M_PI) / 180)
     }
 }
 
