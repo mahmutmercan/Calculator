@@ -47,6 +47,9 @@ class CalculatorController: UIViewController {
         if previousNumber == 0 {
             previousNumber = numberOnScreen
             numberOnScreen = 0
+            if sender.tag == 14 {
+                currentResult = -1 * currentResult
+            }
             if sender.tag == 13 {
                 numberOnScreen = 1
             }
@@ -80,6 +83,7 @@ class CalculatorController: UIViewController {
                 total = Float(currentResult)
                 resultLabel.text = String(total)
                 previousNumber = currentResult
+                numberOnScreen = 1
             }
             
             else if sender.tag == 12 {
@@ -107,6 +111,15 @@ class CalculatorController: UIViewController {
                 previousNumber = total
             }
             
+            else if sender.tag == 19 {
+                value1 = previousNumber
+                currentResult = optSquared(value1: value1)
+                total = Float(currentResult)
+                resultLabel.text = String(total)
+                numberOnScreen = 0
+                previousNumber = total
+            }
+            
             else if sender.tag == 20 {
                 value1 = previousNumber
                 currentResult = optSinus(value1: value1)
@@ -128,6 +141,15 @@ class CalculatorController: UIViewController {
             else if sender.tag == 22 {
                 value1 = previousNumber
                 currentResult = optTanjant(value1: value1)
+                total = Float(currentResult)
+                resultLabel.text = String(total)
+                numberOnScreen = 0
+                previousNumber = total
+            }
+            
+            else if sender.tag == 23 {
+                value1 = previousNumber
+                currentResult = optSquareRoot(value1: value1)
                 total = Float(currentResult)
                 resultLabel.text = String(total)
                 numberOnScreen = 0
@@ -195,6 +217,15 @@ extension CalculatorController {
     
     func optTanjant(value1: Float) -> Float {
         return tan(value1 * Float(M_PI) / 180)
+    }
+    func optSquared(value1: Float) -> Float {
+        return value1 * value1
+    }
+    
+    func optSquareRoot(value1: Float) -> Float {
+        let x = previousNumber
+        let value1 = x.squareRoot()
+        return value1
     }
 }
 

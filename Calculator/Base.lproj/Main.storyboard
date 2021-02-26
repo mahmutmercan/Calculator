@@ -24,9 +24,12 @@
                                     <constraint firstAttribute="height" constant="72" id="IsN-Zf-ojM"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" name="Helvetica" family="Helvetica" pointSize="40"/>
-                                <state key="normal" title="cot">
+                                <state key="normal" title="√">
                                     <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
+                                <connections>
+                                    <action selector="buttonTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="WvC-o1-zXy"/>
+                                </connections>
                             </button>
                             <button opaque="NO" tag="16" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KiC-At-c5e">
                                 <rect key="frame" x="331" y="782" width="72" height="72"/>
@@ -306,9 +309,12 @@
                                     <constraint firstAttribute="height" constant="72" id="rrv-pI-vC6"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" name="Helvetica" family="Helvetica" pointSize="40"/>
-                                <state key="normal" title="√">
+                                <state key="normal" title="x²">
                                     <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
+                                <connections>
+                                    <action selector="buttonTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="D98-Si-c7p"/>
+                                </connections>
                             </button>
                             <button opaque="NO" tag="18" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3ez-Jg-5Cg">
                                 <rect key="frame" x="171" y="462" width="72" height="72"/>
